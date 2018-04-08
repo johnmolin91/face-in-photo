@@ -1,9 +1,8 @@
-const path = require("path");
-const axios = require("axios");
-const router = require("express").Router();
+import React from 'react';
+import { Route } from 'react-router';
 
-router.get(function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
-});
+import App from '../src/components/App.js';
 
-module.exports = router;
+export default (
+    <route path="/" component={App} />
+)
