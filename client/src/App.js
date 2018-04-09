@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import SignUp from "./pages/SignUp";
+import Home from "./pages/Home";
 
 class App extends Component {
 
   render() {
     return (
       <div className="App">
-        <SignUp />
+        <Home />
       </div>
     )
   }
