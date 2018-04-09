@@ -1,6 +1,28 @@
 import React from 'react';
 import axios from "axios";
 
+class SignUpform extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            authenticated: false
+        };
+    }
+
+    render() {
+        return (
+            <div style={{maxWidth: "1160px", margin: "0 auto"}}>
+                <BrowserRouter>
+                    <div>
+                        <Header authenticated={this.state.authenticated} />
+                        <div className="main-content" style={{padding: "1em"}}></div>
+                    </div>
+                </BrowserRouter>
+            </div>
+        )
+    }
+}
+
 // class SignUpForm extends React.Component {
 //     constructor(props) {
 //         super(props);
