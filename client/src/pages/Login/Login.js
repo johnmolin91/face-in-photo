@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { Redirect } from 'react-router-dom';
+// import { Toaster, Intent } from 'blueprintjs';
 
 const loginStyles = {
     width: "90%",
@@ -8,12 +9,15 @@ const loginStyles = {
     border: "1px solid #ddd",
     borderRadius: "5px",
     padding: "10px"
-}
+};
 
 class Login extends Component {
     constructor(props) {
         super(props)
         this.authWithEmailPassword = this.authWithEmailPassword.bind(this)
+        this.state = {
+          redirect: false
+        }
     }
 
     authWithEmailPassword(event) {
@@ -25,6 +29,9 @@ class Login extends Component {
     }
 
     render() {
+      if (this.state.redirect === true) {
+        return <Redirect to='/' />
+      }
         return (
           <div style={loginStyles}>
             <form onSubmit={(event) => this.authWithEmailPassword(event)}>
