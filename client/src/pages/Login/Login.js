@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
-// import { Toaster, Intent } from 'blueprintjs';
+import { Header } from '../../components/Header';
 
 const loginStyles = {
     width: "90%",
@@ -54,4 +54,4 @@ class Login extends Component {
       }
     }
 
-export default Login
+export default Login;

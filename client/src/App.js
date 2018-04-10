@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from "./pages/Home";
+import Header from "./components/Header";
 import Login from "./pages/Login";
 import { app, base } from './base';
 
@@ -12,7 +13,7 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.removeAuthListener = app.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({
@@ -27,7 +28,13 @@ class App extends Component {
     }
 
 componentWillUnmount() {
-  this.removeAuthListener();
+    if (this.state.loading === true) {
+      return (
+        <div style={{ textAlign: "center", position: "absolute", top: "25%", left: "50%" }}>
+          <h3>Loading</h3>
+        </div>
+      )
+    }
 }
 
   render() {
@@ -35,7 +42,7 @@ componentWillUnmount() {
       <div style={{maxWidth: "1160px", margin: "0 auto"}}>
         <BrowserRouter>
           <div>
-              {/*<Header authenticated={this.state.authenticated} /> */}
+              <Header authenticated={this.state.authenticated} />
               <div className="main-content" style={{padding: "1em"}}>
                 <div className="workspace">
                   <Route exact path="/" component={Home} />
