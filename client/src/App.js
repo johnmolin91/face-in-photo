@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from "./pages/Home";
 import Header from "./components/Header";
 import Login from "./pages/Login";
+import Logout from "./components/Logout";
 import { app, base } from './base';
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
     super();
     this.state = {
       authenticated: false,
+      loading: true
     };
   }
 
@@ -17,24 +19,20 @@ class App extends Component {
     this.removeAuthListener = app.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({
-          authenticated: true
+          authenticated: true,
+          loading: false
         })
       } else {
         this.setState({
-          authenticated: false
+          authenticated: false,
+          loading: false
         })
       }
       })
     }
 
 componentWillUnmount() {
-    if (this.state.loading === true) {
-      return (
-        <div style={{ textAlign: "center", position: "absolute", top: "25%", left: "50%" }}>
-          <h3>Loading</h3>
-        </div>
-      )
-    }
+  this.removeAuthListener();
 }
 
   render() {
@@ -42,18 +40,19 @@ componentWillUnmount() {
       <div style={{maxWidth: "1160px", margin: "0 auto"}}>
         <BrowserRouter>
           <div>
-              <Header authenticated={this.state.authenticated} />
-              <div className="main-content" style={{padding: "1em"}}>
-                <div className="workspace">
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/login" component={Login} />
-                </div>
+            <Header authenticated={this.state.authenticated} />
+            <div className="main-content" style={{padding: "1em"}}>
+              <div className="workspace">
+                <Route exact path="/login" component={Login}/>
+                <Route exact path="/logout" component={Logout}/>
               </div>
+            </div>
           </div>
         </BrowserRouter>
       </div>
-    )
-  }
-}
+    );
+  };
+};
+  
 
 export default App;
