@@ -20,17 +20,13 @@ class Header extends Component {
                         <span className="pt-navbar-divider"></span>
                         <button className="pt-button pt-minimal pt-icon-user"></button>
                         <button className="pt-button pt-minimal pt-icon-cog"></button>
+                        <Link className="pt-button pt-minimal pt-icon-log-out" to="/logout">Logout</Link>
                     </div>)
                         : (
                     <div className="pt-navbar-group pt-align-right">
                         <Link className="pt-button pt-intent-primary" to="/login">Register/Login</Link>
                     </div>
                     )
-                    // :   (
-                    //     <div className="pt-navbar-group pt-align-right">
-                    //     <Link className="pt-button pt-minimal pt-icon-log-out" to="/logout">Logout</Link>
-                    // </div>
-                    //     )
                     }
                 </nav>
             </BrowserRouter>

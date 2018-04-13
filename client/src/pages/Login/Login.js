@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import { Header } from '../../components/Header';
+import { app, base } from '../../base';
 
 const loginStyles = {
     width: "90%",
@@ -21,12 +22,28 @@ class Login extends Component {
     }
 
     authWithEmailPassword(event) {
-        event.preventDefault()
-        console.table([{
-            email: this.emailInput.value,
-            password: this.passwordInput.value
-        }])
+      event.preventDefault()
+  
+      const email = this.emailInput.value
+      const password = this.passwordInput.value
+  
+      app.auth().fetchProvidersForEmail(email)
+        .then((providers) => {
+          if (providers.length === 0) {
+            // create user
+            return app.auth().createUserWithEmailAndPassword(email, password)
+          } else {
+            // sign in with email/password
+            return app.auth().signInWithEmailAndPassword(email, password)
+          }
+        })
+        .then((user) => {
+          if (user && user.email) {
+            this.setState({ redirect: true })
+          }
+        })
     }
+
 
     render() {
       if (this.state.redirect === true) {
