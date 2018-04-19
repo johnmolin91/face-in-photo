@@ -22,7 +22,7 @@ class Header extends Component {
                 <BrowserRouter>
                     <nav className="pt-navbar">
                         <div className="pt-navbar-group pt-align-left">
-                            <div className="pt-navbar-heading">Title</div>
+                            <div className="pt-navbar-heading">FaceNFoto</div>
                         </div>
                         {this.props.authenticated
                             ? <input style={searchStyle} className="pt-input" placeholder="Search" type="text" />
