@@ -35,7 +35,7 @@ class App extends Component {
       })
     }
 
-componentWillUnmount() {
+componentWillmount() {
   this.removeAuthListener();
 }
 

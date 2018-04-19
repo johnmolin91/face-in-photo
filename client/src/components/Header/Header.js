@@ -5,6 +5,16 @@ const title = {
     fontSize: 36
 }
 
+const regLog = {
+    float: 'right',
+    fontSize: 24,
+    padding: 20
+}
+
+const searchStyle = {
+    fontSize: 24
+}
+
 class Header extends Component {
     render() {
         return (
@@ -15,19 +25,19 @@ class Header extends Component {
                             <div className="pt-navbar-heading">Title</div>
                         </div>
                         {this.props.authenticated
-                            ? <input className="pt-input" placeholder="Search" type="text" />
+                            ? <input style={searchStyle} className="pt-input" placeholder="Search" type="text" />
                         : null
                         }
                         {
                             this.props.authenticated
                             ? (
-                        <div className="pt-navbar-group pt-align-right">
+                        <div style={regLog} className="pt-navbar-group pt-align-right">
                             <span className="pt-navbar-divider"></span>
-                            <Link className="pt-button pt-minimal pt-icon-log-out" to="/logout">Logout</Link>
+                            <Link className="pt-button pt-minimal pt-icon-log-out" to="/logout" onClick="window.location.reload()">Logout</Link>
                         </div>)
                             : (
-                        <div className="pt-navbar-group pt-align-right">
-                            <Link className="pt-button pt-intent-primary" to="/login">Register/Login</Link>
+                        <div style={regLog} className="pt-navbar-group pt-align-right">
+                            <Link className="pt-button pt-intent-primary" to="/login" onClick="window.location.reload()">Register/Login</Link>
                         </div>
                         )
                         }
