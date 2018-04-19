@@ -6,6 +6,10 @@ import Login from "./pages/Login";
 import Logout from "./components/Logout";
 import { app, base } from './base';
 
+const headerStyle = {
+  textAlign: 'center'
+}
+
 class App extends Component {
   constructor() {
     super();
@@ -39,7 +43,7 @@ componentWillUnmount() {
     return (
       <div style={{maxWidth: "1160px", margin: "0 auto"}}>
         <BrowserRouter>
-          <div>
+          <div style={headerStyle}>
             <Header authenticated={this.state.authenticated} />
             <div className="main-content" style={{padding: "1em"}}>
               <div className="workspace">
